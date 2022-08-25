@@ -8,7 +8,7 @@ Aim is generating artificial x-section images that may be used for
 training neural network models
 
 """
-import numpy
+
 import numpy as np
 from PIL import Image, ImageDraw
 import random
