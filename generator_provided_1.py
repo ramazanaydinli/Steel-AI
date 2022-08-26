@@ -79,17 +79,20 @@ def create_geometry(selection_list):
     nominal_central_element_thickness = 2
     nominal_central_element_length = 20
     central_coordinate = (0, 0)
+    x_coordinates = []
+    y_coordinates = []
     if element_of_origin == 'Plate':
         is_horizontal = bool(random.getrandbits(1))
         if is_horizontal:
-            x1 = (-nominal_central_element_length/2, nominal_central_element_length/2)
-            y1 = (-nominal_central_element_thickness/2, nominal_central_element_thickness/2)
+            x_coordinates.append((-nominal_central_element_length/2, nominal_central_element_length/2))
+            y_coordinates.append((-nominal_central_element_thickness/2, nominal_central_element_thickness/2))
         else:
-            x1 = (-nominal_central_element_thickness/2, nominal_central_element_thickness/2)
-            y1 = (-nominal_central_element_length/2, nominal_central_element_length/2)
+            x_coordinates.append((-nominal_central_element_thickness/2, nominal_central_element_thickness/2))
+            y_coordinates.append((-nominal_central_element_length/2, nominal_central_element_length/2))
         if number_of_selected_elements > 1:
-            for j in range(number_of_selected_elements):
-                print(j)
+            for j in range(1, number_of_selected_elements):
+                if selection_list[1] == 'IPN':
+                    print('xd')
     elif element_of_origin == 'IPN':
         is_horizontal = bool(random.getrandbits(1))
         None
@@ -99,6 +102,7 @@ def create_geometry(selection_list):
     elif element_of_origin == 'Legged':
         is_horizontal = bool(random.getrandbits(1))
         None
+    # nominal_line_coordinates = np.concatenate((x_coordinates, y_coordinates), axis=1)
     return None
 
 
@@ -126,8 +130,9 @@ for i in range(number_of_images):
         number_of_x_section = 2
     elif chosen_shape == ['built_up_consisting_3_shapes']:
         number_of_x_section = 3
-    elif chosen_shape == ['built_up_consisting_4_shapes']:
+    else:
         number_of_x_section = 4
 
     selected_elements = generate_from_tabular(number_of_x_section)
     nominal_corner_coordinates = create_geometry(selected_elements)
+
