@@ -76,34 +76,55 @@ def create_geometry(selection_list):
     """
     number_of_selected_elements = len(selection_list)
     element_of_origin = selection_list[0]
-    nominal_central_element_thickness = 2
-    nominal_central_element_length = 20
-    central_coordinate = (0, 0)
+    t = 2 * random.randint(1, 3)
+    l = 2 * random.randint(3, 15)
     x_coordinates = []
     y_coordinates = []
+    is_horizontal = bool(random.getrandbits(1))
     if element_of_origin == 'Plate':
-        is_horizontal = bool(random.getrandbits(1))
+        x_coordinates.append((-l/2, l/2))
+        y_coordinates.append((-t/2, t/2))
         if is_horizontal:
-            x_coordinates.append((-nominal_central_element_length/2, nominal_central_element_length/2))
-            y_coordinates.append((-nominal_central_element_thickness/2, nominal_central_element_thickness/2))
-        else:
-            x_coordinates.append((-nominal_central_element_thickness/2, nominal_central_element_thickness/2))
-            y_coordinates.append((-nominal_central_element_length/2, nominal_central_element_length/2))
+            x_coordinates, y_coordinates = y_coordinates, x_coordinates
         if number_of_selected_elements > 1:
             for j in range(1, number_of_selected_elements):
+                x_coordinates = []
+                y_coordinates = []
                 if selection_list[1] == 'IPN':
-                    print('xd')
-    elif element_of_origin == 'IPN':
-        is_horizontal = bool(random.getrandbits(1))
-        None
-    elif element_of_origin == 'UPN':
-        is_horizontal = bool(random.getrandbits(1))
-        None
-    elif element_of_origin == 'Legged':
-        is_horizontal = bool(random.getrandbits(1))
-        None
-    # nominal_line_coordinates = np.concatenate((x_coordinates, y_coordinates), axis=1)
-    return None
+                    random_generator = random.randint(0, 5)
+                    if random_generator == 0:
+                        x_coordinates.append((-t / 2, t / 2))
+                        y_coordinates.append((-l / 2, l / 2))
+                        x_coordinates.append((-l / 2, l / 2))
+                        x_coordinates.append((-l / 2, l / 2))
+                        x_coordinates.append((-l / 2, l / 2))
+                        x_coordinates.append((-l / 2, l / 2))
+                        y_coordinates.append((l/2 + 2 * t, l/2 + 1.5 * t))
+                        y_coordinates.append((l/2 + 1.5 * t, l/2 + t))
+                        y_coordinates.append((-l / 2 - 2 * t, -l / 2 - 1.5 * t))
+                        y_coordinates.append((-l / 2 - 1.5 * t, -l / 2 - t))
+    #                 elif random_generator == 1:
+    #                     None
+    #                 elif random_generator == 2:
+    #                     None
+    #                 elif random_generator == 3:
+    #                     None
+    #                 elif random_generator == 4:
+    #                     None
+    #                 elif random_generator == 5:
+    #                     None
+    #
+    # elif element_of_origin == 'IPN':
+    #     is_horizontal = bool(random.getrandbits(1))
+    #     None
+    # elif element_of_origin == 'UPN':
+    #     is_horizontal = bool(random.getrandbits(1))
+    #     None
+    # elif element_of_origin == 'Legged':
+    #     is_horizontal = bool(random.getrandbits(1))
+    #     None
+    nominal_corner_coordinates = np.hstack((x_coordinates, y_coordinates))
+    return nominal_corner_coordinates
 
 
 def generate_from_tabular(k):
@@ -135,4 +156,31 @@ for i in range(number_of_images):
 
     selected_elements = generate_from_tabular(number_of_x_section)
     nominal_corner_coordinates = create_geometry(selected_elements)
+    available_x_pixel_space = (int(blank_corner_ratio_to_image_area * image_width),
+                               int((1 - blank_corner_ratio_to_image_area) * image_width))
+    available_y_pixel_space = (int(blank_corner_ratio_to_image_area * image_height),
+                               int((1 - blank_corner_ratio_to_image_area) * image_height))
+    is_inside_hatched = bool(random.getrandbits(1))
+    line_thickness = random.randint(1, 2)
+    nominal_line_coordinates = []
+    if len(nominal_corner_coordinates) > 0:
+
+
+        print(nominal_corner_coordinates.shape)
+        print(nominal_corner_coordinates)
+        print(nominal_corner_coordinates[:, 0])
+        for j in range(len(nominal_corner_coordinates)):
+            for t in range(2):
+                for k in range(2):
+                    nominal_line_coordinates.append((nominal_corner_coordinates[j][t],
+                                                     nominal_corner_coordinates[j][k+2]))
+    # img = ImageDraw.Draw(image)
+    # if len(nominal_corner_coordinates) > 0:
+    #     for p in range(len(nominal_corner_coordinates)):
+    #         img.line((nominal_line_coordinates[4 * p + 0], nominal_line_coordinates[4 * p + 1]), fill='black', width=2)
+    #         img.line((nominal_line_coordinates[4 * p + 1], nominal_line_coordinates[4 * p + 2]), fill='black', width=2)
+    #         img.line((nominal_line_coordinates[4 * p + 2], nominal_line_coordinates[4 * p + 3]), fill='black', width=2)
+    #         img.line((nominal_line_coordinates[4 * p + 3], nominal_line_coordinates[4 * p + 0]), fill='black', width=2)
+    #     image.show()
+
 
