@@ -76,53 +76,93 @@ def create_geometry(selection_list):
     """
     number_of_selected_elements = len(selection_list)
     element_of_origin = selection_list[0]
-    t = 2 * random.randint(1, 3)
-    l = 2 * random.randint(3, 15)
+    t = 2 * random.randint(2, 4)
+    l = 2 * random.randint(10, 20)
     x_coordinates = []
     y_coordinates = []
     is_horizontal = bool(random.getrandbits(1))
     if element_of_origin == 'Plate':
         x_coordinates.append((-l/2, l/2))
         y_coordinates.append((-t/2, t/2))
-        if is_horizontal:
-            x_coordinates, y_coordinates = y_coordinates, x_coordinates
-        if number_of_selected_elements > 1:
-            for j in range(1, number_of_selected_elements):
-                x_coordinates = []
-                y_coordinates = []
-                if selection_list[1] == 'IPN':
-                    random_generator = random.randint(0, 5)
-                    if random_generator == 0:
-                        x_coordinates.append((-t / 2, t / 2))
-                        y_coordinates.append((-l / 2, l / 2))
-                        x_coordinates.append((-l / 2, l / 2))
-                        x_coordinates.append((-l / 2, l / 2))
-                        x_coordinates.append((-l / 2, l / 2))
-                        x_coordinates.append((-l / 2, l / 2))
-                        y_coordinates.append((l/2 + 2 * t, l/2 + 1.5 * t))
-                        y_coordinates.append((l/2 + 1.5 * t, l/2 + t))
-                        y_coordinates.append((-l / 2 - 2 * t, -l / 2 - 1.5 * t))
-                        y_coordinates.append((-l / 2 - 1.5 * t, -l / 2 - t))
-    #                 elif random_generator == 1:
-    #                     None
-    #                 elif random_generator == 2:
-    #                     None
-    #                 elif random_generator == 3:
-    #                     None
-    #                 elif random_generator == 4:
-    #                     None
-    #                 elif random_generator == 5:
-    #                     None
-    #
+        if number_of_selected_elements == 2:
+            x_coordinates = []
+            y_coordinates = []
+            if selection_list[1] == 'IPN':
+                random_generator = random.randint(0, 4)
+                if random_generator == 0:
+                    x_coordinates.append((-t / 2, t / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((l/2 + 2 * t, l/2 + 1.5 * t))
+                    y_coordinates.append((l/2 + 1.5 * t, l/2 + t))
+                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - 1.5 * t))
+                    y_coordinates.append((-l / 2 - 1.5 * t, -l / 2 - t))
+                elif random_generator == 1:
+                    x_coordinates.append((-l / 4, l / 4))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-t / 2, t / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 4, l / 4))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + 1.5 * t))
+                    y_coordinates.append((l / 2 + 1.5 * t, l / 2 + t))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2 - 1.5 * t, -l / 2 - t))
+                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - 1.5 * t))
+                elif random_generator == 2:
+                    x_coordinates.append((-5 * l / 2, 5 * l / 2))
+                    x_coordinates.append((-3 * l / 2, -l / 2))
+                    x_coordinates.append((l / 2, 3 * l / 2))
+                    x_coordinates.append((-l - t / 2, -l + t / 2))
+                    x_coordinates.append((l - t / 2, l + t / 2))
+                    x_coordinates.append((-3 * l / 2, -l / 2))
+                    x_coordinates.append((l / 2, 3 * l / 2))
+                    x_coordinates.append((-5 * l / 2, 5 * l / 2))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + 1.5 * t))
+                    y_coordinates.append((l / 2 + t, l / 2))
+                    y_coordinates.append((l / 2 + t, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, -l / 2 - t))
+                    y_coordinates.append((-l / 2, -l / 2 - t))
+                    y_coordinates.append((-l / 2 - t, -l / 2 - 2 * t))
+                elif random_generator == 3:
+                    x_coordinates.append((-3 * l / 2, 3 * l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-t / 2, t / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-3 * l / 2, 3 * l / 2))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + 1.5 * t))
+                    y_coordinates.append((l / 2 + t, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, -l / 2 - t))
+                    y_coordinates.append((-l / 2 - t, -l / 2 - 2 * t))
+                elif random_generator == 4:
+                    x_coordinates.append((-l / 2 - t, -l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((l / 2, l / 2 + t))
+                    x_coordinates.append((-t / 2, t / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2 - t, l / 2 + t))
+                    y_coordinates.append((l / 2, l / 2 + t))
+                    y_coordinates.append((-l / 2 - t, l / 2 + t))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+            if selection_list[1] == 'UPN':
+                None
     # elif element_of_origin == 'IPN':
-    #     is_horizontal = bool(random.getrandbits(1))
+    #
     #     None
     # elif element_of_origin == 'UPN':
-    #     is_horizontal = bool(random.getrandbits(1))
+    #
     #     None
     # elif element_of_origin == 'Legged':
-    #     is_horizontal = bool(random.getrandbits(1))
+    #
     #     None
+    if is_horizontal:
+        x_coordinates, y_coordinates = y_coordinates, x_coordinates
     nominal_corner_coordinates = np.hstack((x_coordinates, y_coordinates))
     return nominal_corner_coordinates
 
