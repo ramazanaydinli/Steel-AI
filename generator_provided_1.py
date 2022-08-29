@@ -151,7 +151,64 @@ def create_geometry(selection_list):
                     y_coordinates.append((-l / 2, l / 2))
                     y_coordinates.append((-l / 2 - t, -l / 2))
             if selection_list[1] == 'UPN':
-                None
+                random_generator = random.randint(0, 2)
+                if random_generator == 0:
+                    x_coordinates.append((-l / 2 - t, l / 2 + t))
+                    x_coordinates.append((-l / 2 - t, -l / 2))
+                    x_coordinates.append((-l / 2, 0))
+                    x_coordinates.append((0, l / 2))
+                    x_coordinates.append((l / 2, l / 2 + t))
+                    x_coordinates.append((-l / 2, 0))
+                    x_coordinates.append((0, l / 2))
+                    x_coordinates.append((-l / 2 - t, l / 2 + t))
+                    y_coordinates.append((l / 2, l / 2 + t))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((l / 2 - t, l / 2))
+                    y_coordinates.append((l / 2 - t, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+                if random_generator == 1:
+                    x_coordinates.append((-l - t, l + t))
+                    x_coordinates.append((-l - t, -l))
+                    x_coordinates.append((-l, -l / 2))
+                    x_coordinates.append((l / 2, l))
+                    x_coordinates.append((l, l + t))
+                    x_coordinates.append((-l, -l / 2))
+                    x_coordinates.append((l / 2, l))
+                    x_coordinates.append((-l - t, l + t))
+                    y_coordinates.append((l, l + t))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((l / 2 - t, l / 2))
+                    y_coordinates.append((l / 2 - t, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, -l / 2 + t))
+                    y_coordinates.append((-l / 2, -l / 2 + t))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+                if random_generator == 2:
+                    x_coordinates.append((-l, l))
+                    x_coordinates.append((-l, -l / 2 - t))
+                    x_coordinates.append((-l / 2 - t, -l / 2))
+                    x_coordinates.append((l / 2, l / 2 + t))
+                    x_coordinates.append((l / 2 + t, l))
+                    x_coordinates.append((-l, -l / 2 - t))
+                    x_coordinates.append((l / 2 + t, l))
+                    x_coordinates.append((-l, l))
+                    y_coordinates.append((l / 2, l / 2 + t))
+                    y_coordinates.append((l / 2 - t, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((l / 2 - t, l / 2))
+                    y_coordinates.append((-l / 2, -l / 2 + t))
+                    y_coordinates.append((-l / 2, -l / 2 + t))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+            if selection_list[1] == 'Legged':
+                random_generator = random.randint(0, 1)
+                if random_generator == 0:
+                    None
+                if random_generator == 1:
+                    None
     # elif element_of_origin == 'IPN':
     #
     #     None
@@ -204,11 +261,6 @@ for i in range(number_of_images):
     line_thickness = random.randint(1, 2)
     nominal_line_coordinates = []
     if len(nominal_corner_coordinates) > 0:
-
-
-        print(nominal_corner_coordinates.shape)
-        print(nominal_corner_coordinates)
-        print(nominal_corner_coordinates[:, 0])
         for j in range(len(nominal_corner_coordinates)):
             for t in range(2):
                 for k in range(2):
@@ -222,5 +274,3 @@ for i in range(number_of_images):
     #         img.line((nominal_line_coordinates[4 * p + 2], nominal_line_coordinates[4 * p + 3]), fill='black', width=2)
     #         img.line((nominal_line_coordinates[4 * p + 3], nominal_line_coordinates[4 * p + 0]), fill='black', width=2)
     #     image.show()
-
-
