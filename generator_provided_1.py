@@ -72,12 +72,13 @@ def create_geometry(selection_list):
     """
     Creates simple unscaled geometry with selected elements
     :param selection_list: list of selected tabular x-sections
-    :return: nominal_corner_coordinates: coordinates of unscaled section
+    :return: x_coordinates: x coordinates of unscaled section
+    y_coordinates: y coordinates of unscaled section
     """
     number_of_selected_elements = len(selection_list)
     element_of_origin = selection_list[0]
-    t = 2 * random.randint(2, 4)
-    l = 2 * random.randint(10, 20)
+    t = 2 * random.randint(1, 2)
+    l = 2 * random.randint(14, 24)
     x_coordinates = []
     y_coordinates = []
     is_horizontal = bool(random.getrandbits(1))
@@ -91,26 +92,26 @@ def create_geometry(selection_list):
                 random_generator = random.randint(0, 4)
                 if random_generator == 0:
                     x_coordinates.append((-t / 2, t / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
+                    y_coordinates.append((l / 2 + t, l / 2))
                     y_coordinates.append((-l / 2, l / 2))
-                    x_coordinates.append((-l / 2, l / 2))
-                    x_coordinates.append((-l / 2, l / 2))
-                    x_coordinates.append((-l / 2, l / 2))
-                    x_coordinates.append((-l / 2, l / 2))
-                    y_coordinates.append((l/2 + 2 * t, l/2 + 1.5 * t))
-                    y_coordinates.append((l/2 + 1.5 * t, l/2 + t))
-                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - 1.5 * t))
-                    y_coordinates.append((-l / 2 - 1.5 * t, -l / 2 - t))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - t))
                 elif random_generator == 1:
                     x_coordinates.append((-l / 4, l / 4))
                     x_coordinates.append((-l / 2, l / 2))
                     x_coordinates.append((-t / 2, t / 2))
                     x_coordinates.append((-l / 2, l / 2))
                     x_coordinates.append((-l / 4, l / 4))
-                    y_coordinates.append((l / 2 + 2 * t, l / 2 + 1.5 * t))
-                    y_coordinates.append((l / 2 + 1.5 * t, l / 2 + t))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
+                    y_coordinates.append((l / 2 + t, l / 2))
                     y_coordinates.append((-l / 2, l / 2))
-                    y_coordinates.append((-l / 2 - 1.5 * t, -l / 2 - t))
-                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - 1.5 * t))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - t))
                 elif random_generator == 2:
                     x_coordinates.append((-5 * l / 2, 5 * l / 2))
                     x_coordinates.append((-3 * l / 2, -l / 2))
@@ -120,7 +121,7 @@ def create_geometry(selection_list):
                     x_coordinates.append((-3 * l / 2, -l / 2))
                     x_coordinates.append((l / 2, 3 * l / 2))
                     x_coordinates.append((-5 * l / 2, 5 * l / 2))
-                    y_coordinates.append((l / 2 + 2 * t, l / 2 + 1.5 * t))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
                     y_coordinates.append((l / 2 + t, l / 2))
                     y_coordinates.append((l / 2 + t, l / 2))
                     y_coordinates.append((-l / 2, l / 2))
@@ -134,11 +135,11 @@ def create_geometry(selection_list):
                     x_coordinates.append((-t / 2, t / 2))
                     x_coordinates.append((-l / 2, l / 2))
                     x_coordinates.append((-3 * l / 2, 3 * l / 2))
-                    y_coordinates.append((l / 2 + 2 * t, l / 2 + 1.5 * t))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
                     y_coordinates.append((l / 2 + t, l / 2))
                     y_coordinates.append((-l / 2, l / 2))
                     y_coordinates.append((-l / 2, -l / 2 - t))
-                    y_coordinates.append((-l / 2 - t, -l / 2 - 2 * t))
+                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - t))
                 elif random_generator == 4:
                     x_coordinates.append((-l / 2 - t, -l / 2))
                     x_coordinates.append((-l / 2, l / 2))
@@ -150,7 +151,7 @@ def create_geometry(selection_list):
                     y_coordinates.append((-l / 2 - t, l / 2 + t))
                     y_coordinates.append((-l / 2, l / 2))
                     y_coordinates.append((-l / 2 - t, -l / 2))
-            if selection_list[1] == 'UPN':
+            elif selection_list[1] == 'UPN':
                 random_generator = random.randint(0, 2)
                 if random_generator == 0:
                     x_coordinates.append((-l / 2 - t, l / 2 + t))
@@ -203,25 +204,143 @@ def create_geometry(selection_list):
                     y_coordinates.append((-l / 2, -l / 2 + t))
                     y_coordinates.append((-l / 2, -l / 2 + t))
                     y_coordinates.append((-l / 2 - t, -l / 2))
-            if selection_list[1] == 'Legged':
+            elif selection_list[1] == 'Legged':
                 random_generator = random.randint(0, 1)
                 if random_generator == 0:
-                    None
+                    x_coordinates.append((-3 * t / 2, -t / 2))
+                    x_coordinates.append((-t / 2, t / 2))
+                    x_coordinates.append((t / 2, 3 * t / 2))
+                    x_coordinates.append((-l - t / 2, -3 * t / 2))
+                    x_coordinates.append((3 * t / 2, l + t / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, -l / 2 + t))
+                    y_coordinates.append((-l / 2, -l / 2 + t))
                 if random_generator == 1:
-                    None
-    # elif element_of_origin == 'IPN':
-    #
-    #     None
-    # elif element_of_origin == 'UPN':
-    #
-    #     None
-    # elif element_of_origin == 'Legged':
-    #
-    #     None
+                    x_coordinates.append((-3 * l / 2 - t, -3 * l / 2))
+                    x_coordinates.append((-3 * l / 2, 3 * l / 2))
+                    x_coordinates.append((3 * l / 2, 3 * l / 2 + t))
+                    x_coordinates.append((-3 * l / 2, -3 * l / 2 + t))
+                    x_coordinates.append((-3 * l / 2 + t, -l / 2))
+                    x_coordinates.append((l / 2, 3 * l / 2 - t))
+                    x_coordinates.append((3 * l / 2 - t, 3 * l / 2))
+                    x_coordinates.append((-3 * l / 2, -3 * l / 2 + t))
+                    x_coordinates.append((-3 * l / 2 + t, -l / 2))
+                    x_coordinates.append((l / 2, 3 * l / 2 - t))
+                    x_coordinates.append((3 * l / 2 - t, 3 * l / 2))
+                    x_coordinates.append((-3 * l / 2, 3 * l / 2))
+                    y_coordinates.append((-3 * l / 2 - t, 3 * l / 2 + t))
+                    y_coordinates.append((3 * l / 2 + t, 3 * l / 2))
+                    y_coordinates.append((-3 * l / 2 - t, 3 * l / 2 + t))
+                    y_coordinates.append((3 * l / 2, l / 2))
+                    y_coordinates.append((3 * l / 2, 3 * l / 2 - t))
+                    y_coordinates.append((3 * l / 2, 3 * l / 2 - t))
+                    y_coordinates.append((3 * l / 2, l / 2))
+                    y_coordinates.append((-3 * l / 2, -l / 2))
+                    y_coordinates.append((-3 * l / 2, -3 * l / 2 + t))
+                    y_coordinates.append((-3 * l / 2, -3 * l / 2 + t))
+                    y_coordinates.append((-3 * l / 2, -l / 2))
+                    y_coordinates.append((-3 * l / 2 - t, -3 * l / 2))
+            else:
+                x_coordinates.append((-l / 2, l / 2))
+                y_coordinates.append((-t / 2, t / 2))
+    elif element_of_origin == 'IPN':
+        x_coordinates.append((-l / 2, l / 2))
+        x_coordinates.append((-t / 2, t / 2))
+        x_coordinates.append((-l / 2, l / 2))
+        y_coordinates.append((l / 2, l / 2 - t))
+        y_coordinates.append((-l / 2 + t, l / 2 - t))
+        y_coordinates.append((-l / 2, -l / 2 + t))
+        if number_of_selected_elements == 2:
+            x_coordinates = []
+            y_coordinates = []
+            if selection_list[1] == 'Plate':
+                random_generator = random.randint(0, 4)
+                if random_generator == 0:
+                    x_coordinates.append((-t / 2, t / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
+                    y_coordinates.append((l / 2 + t, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - t))
+                elif random_generator == 1:
+                    x_coordinates.append((-l / 4, l / 4))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-t / 2, t / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 4, l / 4))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
+                    y_coordinates.append((l / 2 + t, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - t))
+                elif random_generator == 2:
+                    x_coordinates.append((-5 * l / 2, 5 * l / 2))
+                    x_coordinates.append((-3 * l / 2, -l / 2))
+                    x_coordinates.append((l / 2, 3 * l / 2))
+                    x_coordinates.append((-l - t / 2, -l + t / 2))
+                    x_coordinates.append((l - t / 2, l + t / 2))
+                    x_coordinates.append((-3 * l / 2, -l / 2))
+                    x_coordinates.append((l / 2, 3 * l / 2))
+                    x_coordinates.append((-5 * l / 2, 5 * l / 2))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
+                    y_coordinates.append((l / 2 + t, l / 2))
+                    y_coordinates.append((l / 2 + t, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, -l / 2 - t))
+                    y_coordinates.append((-l / 2, -l / 2 - t))
+                    y_coordinates.append((-l / 2 - t, -l / 2 - 2 * t))
+                elif random_generator == 3:
+                    x_coordinates.append((-3 * l / 2, 3 * l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-t / 2, t / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-3 * l / 2, 3 * l / 2))
+                    y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
+                    y_coordinates.append((l / 2 + t, l / 2))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2, -l / 2 - t))
+                    y_coordinates.append((-l / 2 - 2 * t, -l / 2 - t))
+                elif random_generator == 4:
+                    x_coordinates.append((-l / 2 - t, -l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((l / 2, l / 2 + t))
+                    x_coordinates.append((-t / 2, t / 2))
+                    x_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2 - t, l / 2 + t))
+                    y_coordinates.append((l / 2, l / 2 + t))
+                    y_coordinates.append((-l / 2 - t, l / 2 + t))
+                    y_coordinates.append((-l / 2, l / 2))
+                    y_coordinates.append((-l / 2 - t, -l / 2))
+            else:
+                x_coordinates.append((-l / 2, l / 2))
+                x_coordinates.append((-t / 2, t / 2))
+                x_coordinates.append((-l / 2, l / 2))
+                y_coordinates.append((l / 2, l / 2 - t))
+                y_coordinates.append((-l / 2 + t, l / 2 - t))
+                y_coordinates.append((-l / 2, -l / 2 + t))
+    elif element_of_origin == 'UPN':
+        x_coordinates.append((-l / 2, -l / 2 + t))
+        x_coordinates.append((l / 2 - t, l / 2))
+        x_coordinates.append((-l / 2 + t, l / 2 - t))
+        y_coordinates.append((-l / 4, l / 4))
+        y_coordinates.append((-l / 4, l / 4))
+        y_coordinates.append((-l / 4, - l / 4 + t))
+    elif element_of_origin == 'Legged':
+        x_coordinates.append((-l / 2, -l / 2 + t))
+        x_coordinates.append((-l / 2 + t, l / 2))
+        y_coordinates.append((-l / 2, l / 2))
+        y_coordinates.append((-l / 2, - l / 2 + t))
     if is_horizontal:
         x_coordinates, y_coordinates = y_coordinates, x_coordinates
-    nominal_corner_coordinates = np.hstack((x_coordinates, y_coordinates))
-    return nominal_corner_coordinates
+
+    return x_coordinates, y_coordinates
 
 
 def generate_from_tabular(k):
@@ -252,12 +371,20 @@ for i in range(number_of_images):
         number_of_x_section = 4
 
     selected_elements = generate_from_tabular(number_of_x_section)
-    nominal_corner_coordinates = create_geometry(selected_elements)
+    unscaled_x_coordinates, unscaled_y_coordinates = create_geometry(selected_elements)
     available_x_pixel_space = (int(blank_corner_ratio_to_image_area * image_width),
                                int((1 - blank_corner_ratio_to_image_area) * image_width))
     available_y_pixel_space = (int(blank_corner_ratio_to_image_area * image_height),
                                int((1 - blank_corner_ratio_to_image_area) * image_height))
-    is_inside_hatched = bool(random.getrandbits(1))
+    max_x_length_to_scale = np.max(unscaled_x_coordinates)
+    max_y_length_to_scale = np.max(unscaled_y_coordinates)
+    x_center = int((available_x_pixel_space[0] + available_x_pixel_space[1])/2)
+    y_center = int((available_y_pixel_space[0] + available_y_pixel_space[1]) / 2)
+    scaled_x_coordinates = np.multiply(unscaled_x_coordinates, 8)
+    scaled_x_coordinates = [x + x_center for x in scaled_x_coordinates]
+    scaled_y_coordinates = np.multiply(unscaled_y_coordinates, 8)
+    scaled_y_coordinates = [y + y_center for y in scaled_y_coordinates]
+    nominal_corner_coordinates = np.hstack((scaled_x_coordinates, scaled_y_coordinates))
     line_thickness = random.randint(1, 2)
     nominal_line_coordinates = []
     if len(nominal_corner_coordinates) > 0:
@@ -266,11 +393,13 @@ for i in range(number_of_images):
                 for k in range(2):
                     nominal_line_coordinates.append((nominal_corner_coordinates[j][t],
                                                      nominal_corner_coordinates[j][k+2]))
-    # img = ImageDraw.Draw(image)
-    # if len(nominal_corner_coordinates) > 0:
-    #     for p in range(len(nominal_corner_coordinates)):
-    #         img.line((nominal_line_coordinates[4 * p + 0], nominal_line_coordinates[4 * p + 1]), fill='black', width=2)
-    #         img.line((nominal_line_coordinates[4 * p + 1], nominal_line_coordinates[4 * p + 2]), fill='black', width=2)
-    #         img.line((nominal_line_coordinates[4 * p + 2], nominal_line_coordinates[4 * p + 3]), fill='black', width=2)
-    #         img.line((nominal_line_coordinates[4 * p + 3], nominal_line_coordinates[4 * p + 0]), fill='black', width=2)
-    #     image.show()
+
+    img = ImageDraw.Draw(image)
+    if len(nominal_corner_coordinates) > 0:
+        for p in range(len(nominal_corner_coordinates)):
+            img.line((nominal_line_coordinates[4 * p + 0], nominal_line_coordinates[4 * p + 2]), fill='black', width=2)
+            img.line((nominal_line_coordinates[4 * p + 1], nominal_line_coordinates[4 * p + 3]), fill='black', width=2)
+            img.line((nominal_line_coordinates[4 * p + 2], nominal_line_coordinates[4 * p + 3]), fill='black', width=2)
+            img.line((nominal_line_coordinates[4 * p + 0], nominal_line_coordinates[4 * p + 1]), fill='black', width=2)
+        image_data = np.asarray(image)
+        cv.imwrite('C:\\Users\\METE\Desktop\\LevelUp\\generated_images\\White\\{}.jpg'.format(i), image_data)
