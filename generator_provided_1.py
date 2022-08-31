@@ -12,7 +12,7 @@ from PIL import Image, ImageDraw
 import random
 import cv2 as cv
 
-number_of_images = 500
+number_of_images = 30
 
 min_image_height = 1200
 max_image_height = 1500
@@ -91,9 +91,9 @@ def create_geometry(selection_list):
             if selection_list[1] == 'IPN':
                 random_generator = random.randint(0, 4)
                 if random_generator == 0:
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
                     x_coordinates.append((-t / 2, t / 2))
-                    x_coordinates.append((-l / 2, l / 2))
-                    x_coordinates.append((-l / 2, l / 2))
                     x_coordinates.append((-l / 2, l / 2))
                     x_coordinates.append((-l / 2, l / 2))
                     y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
@@ -179,7 +179,7 @@ def create_geometry(selection_list):
                     x_coordinates.append((-l, -l / 2))
                     x_coordinates.append((l / 2, l))
                     x_coordinates.append((-l - t, l + t))
-                    y_coordinates.append((l, l + t))
+                    y_coordinates.append((l / 2, l / 2 + t))
                     y_coordinates.append((-l / 2, l / 2))
                     y_coordinates.append((l / 2 - t, l / 2))
                     y_coordinates.append((l / 2 - t, l / 2))
@@ -258,9 +258,9 @@ def create_geometry(selection_list):
             if selection_list[1] == 'Plate':
                 random_generator = random.randint(0, 4)
                 if random_generator == 0:
+                    x_coordinates.append((-l / 2, l / 2))
+                    x_coordinates.append((-l / 2, l / 2))
                     x_coordinates.append((-t / 2, t / 2))
-                    x_coordinates.append((-l / 2, l / 2))
-                    x_coordinates.append((-l / 2, l / 2))
                     x_coordinates.append((-l / 2, l / 2))
                     x_coordinates.append((-l / 2, l / 2))
                     y_coordinates.append((l / 2 + 2 * t, l / 2 + t))
@@ -378,15 +378,24 @@ for i in range(number_of_images):
                                int((1 - blank_corner_ratio_to_image_area) * image_height))
     max_x_length_to_scale = np.max(unscaled_x_coordinates)
     max_y_length_to_scale = np.max(unscaled_y_coordinates)
-    x_center = int((available_x_pixel_space[0] + available_x_pixel_space[1])/2)
+    x_center = int((available_x_pixel_space[0] + available_x_pixel_space[1]) / 2)
     y_center = int((available_y_pixel_space[0] + available_y_pixel_space[1]) / 2)
-    scaled_x_coordinates = np.multiply(unscaled_x_coordinates, 8)
+    ratio_of_max_scale_x = (available_x_pixel_space[1] - x_center) / max_x_length_to_scale
+    ratio_of_max_scale_y = (available_y_pixel_space[1] - y_center) / max_y_length_to_scale
+    applicable_x_scale_factor = int(ratio_of_max_scale_x * random.uniform(min_x_section_ratio_to_image_area,
+                                                                          max_x_section_ratio_to_image_area))
+    applicable_y_scale_factor = int(ratio_of_max_scale_y * random.uniform(min_x_section_ratio_to_image_area,
+                                                                          max_x_section_ratio_to_image_area))
+    applicable_scale_factor = min(applicable_x_scale_factor, applicable_y_scale_factor)
+
+    scaled_x_coordinates = np.multiply(unscaled_x_coordinates, applicable_scale_factor)
     scaled_x_coordinates = [x + x_center for x in scaled_x_coordinates]
-    scaled_y_coordinates = np.multiply(unscaled_y_coordinates, 8)
+    scaled_y_coordinates = np.multiply(unscaled_y_coordinates, applicable_scale_factor)
     scaled_y_coordinates = [y + y_center for y in scaled_y_coordinates]
     nominal_corner_coordinates = np.hstack((scaled_x_coordinates, scaled_y_coordinates))
     line_thickness = random.randint(1, 2)
     nominal_line_coordinates = []
+    print(nominal_corner_coordinates)
     if len(nominal_corner_coordinates) > 0:
         for j in range(len(nominal_corner_coordinates)):
             for t in range(2):
