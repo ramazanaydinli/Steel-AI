@@ -1,2 +1,10 @@
 # Steel-AI
  AI applications for steel structures problems
+
+ Lvl-0
+ - Starting level of the project
+ - No order, just the backbone created
+ 
+ Lvl-1
+ - Two types of generators creating section images and just white blank images
+ - Detector takes these two type and trained on them
