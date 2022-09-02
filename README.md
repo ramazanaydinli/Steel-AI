@@ -8,3 +8,7 @@
  Lvl-1
  - Two types of generators creating section images and just white blank images
  - Detector takes these two type and trained on them
+ 
+ Lvl-2
+ - Drawing type updated, now shapes could be hatched with white, gray or black
+ - Detector has validation set, input shape changed
