@@ -5,7 +5,7 @@ import random
 import cv2 as cv
 import os
 
-number_of_images = 1
+number_of_images = 7500
 
 min_image_height = 400
 max_image_height = 400
@@ -24,7 +24,7 @@ built_up_consisting_4_shapes_probability = 0.25
 tabular_shape_list = ['Plate', 'IPN', 'UPN', 'Legged']
 
 current_working_directory = os.getcwd()
-main_directory_to_save_images = os.path.join(current_working_directory, 'generated_images')
+main_directory_to_save_images = os.path.join(current_working_directory, 'generated_images', 'training')
 
 annotation_font_types = ['seguisym.ttf', 'osifont.ttf', 'isocpeui.ttf']
 
@@ -432,7 +432,7 @@ for i in range(number_of_images):
     y_bottom_annotate_vertical_line_coordinates = \
         [(x_max_annotate +8, y_max_annotate),
          (x_max_annotate +8, (y_max_annotate - y_min_annotate)/2 + y_min_annotate + 5)]
-    is_annotated = 1 #random.getrandbits(1)
+    is_annotated = random.getrandbits(1)
     if is_annotated:
         text_x = str(int(x_length))
         text_y = str(int(y_length))
