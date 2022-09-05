@@ -16,3 +16,4 @@
  Lvl-3
  - Drawings now contain annotations
  - Detector now making multi-classification instead of binary
+ - Detector now has dropout layers and data augmentation
