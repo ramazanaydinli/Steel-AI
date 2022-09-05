@@ -12,3 +12,7 @@
  Lvl-2
  - Drawing type updated, now shapes could be hatched with white, gray or black
  - Detector has validation set, input shape changed
+ 
+ Lvl-3
+ - Drawings now contain annotations
+ - Detector now making multi-classification instead of binary
