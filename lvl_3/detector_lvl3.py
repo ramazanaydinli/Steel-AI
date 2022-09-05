@@ -8,7 +8,7 @@ validation_path = 'C:\\Users\\METE\Desktop\\LevelUp\\generated_images\\validatio
 prediction_path = 'C:\\Users\\METE\\Desktop\\LevelUp\\test_images\\ipn_trial.png'
 
 model = tf.keras.models.Sequential([
-    tf.keras.layers.Conv2D(16, (3, 3), activation='relu', input_shape=(400, 400, 3)),
+    tf.keras.layers.Conv2D(16, (3, 3), activation='relu', input_shape=(400, 400, 1)),
     tf.keras.layers.MaxPooling2D(2, 2),
     tf.keras.layers.Conv2D(32, (3, 3), activation='relu'),
     tf.keras.layers.MaxPooling2D(2, 2),
@@ -33,6 +33,7 @@ train_datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1/255,
 
 train_generator = train_datagen.flow_from_directory(
         train_path,
+        color_mode='grayscale',
         target_size=(400, 400),
         batch_size=128,
         class_mode='categorical')
@@ -41,6 +42,7 @@ test_datagen = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1/255,
 
 validation_generator = test_datagen.flow_from_directory(
     validation_path,
+    color_mode='grayscale',
     target_size=(400, 400),
     batch_size=32,
     class_mode='categorical'
@@ -54,7 +56,7 @@ class myCallback(tf.keras.callbacks.Callback):
         :param logs: log file
         :return: 0
         """
-        if logs.get('loss') < 0.05:
+        if logs.get('accuracy') > 0.95:
             print("\n Accuracy is reached %95 or more, training stopped!")
             self.model.stop_training = True
 
@@ -65,7 +67,7 @@ history = model.fit(train_generator, steps_per_epoch=8, epochs=20, validation_da
                     validation_steps=8, verbose=1, callbacks=[callbacks])
 
 
-img = tf.keras.utils.load_img(prediction_path, target_size=(400, 400))
+img = tf.keras.utils.load_img(prediction_path, color_mode='grayscale', target_size=(400, 400))
 x = tf.keras.utils.img_to_array(img)
 x /= 255
 x = np.expand_dims(x, axis=0)
