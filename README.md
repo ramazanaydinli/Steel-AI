@@ -17,3 +17,6 @@
  - Drawings now contain annotations
  - Detector now making multi-classification instead of binary
  - Detector now has dropout layers and data augmentation, images turned into grayscale before training
+
+Lvl-4
+ - InceptionV3 model implemented
