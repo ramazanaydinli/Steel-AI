@@ -37,5 +37,6 @@ Lvl-4
  - Since dataset created manually it is not possible to add more features which causing poor prediction performance, misclassified image is below
  - For overcoming this problem GANs will be used for creating dataset
  
- ![image](https://user-images.githubusercontent.com/80748060/193355352-200654ab-595d-44dd-b3df-fa6f616a4b99.png)
+![image](https://user-images.githubusercontent.com/80748060/193355486-2a883f0d-8aba-441f-9032-f7a16fe36a53.png)
+
 
