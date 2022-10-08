@@ -39,4 +39,7 @@ Lvl-4
  
 ![image](https://user-images.githubusercontent.com/80748060/193355486-2a883f0d-8aba-441f-9032-f7a16fe36a53.png)
 
+Lvl-5
+ - Neural Style Transfer method used and misclassification problem solved
+ ![image](https://user-images.githubusercontent.com/80748060/194715308-389e6a86-3d78-4004-8575-e8266c5ed145.png)
 
