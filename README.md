@@ -41,5 +41,6 @@ Lvl-4
 
 Lvl-5
  - Neural Style Transfer method used and misclassification problem solved
+ - It is also important to realize, dimensional differences creating more problem comparing with the style differences
  ![image](https://user-images.githubusercontent.com/80748060/194715308-389e6a86-3d78-4004-8575-e8266c5ed145.png)
 
