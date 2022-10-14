@@ -1,6 +1,7 @@
 # Steel-AI
  AI applications for steel structures problems, typical problem which will be feeded into system as an input is shown below:
 ![image](https://user-images.githubusercontent.com/80748060/195896003-9210d54f-f406-45d6-a5e2-d4e115f6e306.png)
+
 Problems are surely including text but it may also include technical drawings
 
 Solution Idea:
