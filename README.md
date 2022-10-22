@@ -67,4 +67,11 @@ Lvl-5
  - Neural Style Transfer method used and misclassification problem solved
  - It is also important to realize, dimensional differences creating more problem comparing with the style differences
  ![image](https://user-images.githubusercontent.com/80748060/194715308-389e6a86-3d78-4004-8575-e8266c5ed145.png)
+ 
+ 
+ Since the dataset created manually by random numbers, it is not a bad idea to create them from industry-standardized dimensions. Hard part of this work is completed and now tables can be detected by using keras-ocr.
+ 
+ 
+ ![image](https://user-images.githubusercontent.com/80748060/197308936-01d3a045-c170-4982-b54d-66ff1f7cc910.png)
+
 
