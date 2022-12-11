@@ -82,7 +82,7 @@ Lvl-6
  ![image](https://user-images.githubusercontent.com/80748060/206924613-1095ca88-767b-45bb-8ec8-bc9f9a94a8ad.png)
 
 
-- Model never see these two images below but it recognizes them as well.
+- Model never see these three images below but it recognizes them as well.
 
 ![image](https://user-images.githubusercontent.com/80748060/206924660-0e4a2473-878b-48de-a75f-8bdd2241a547.png)
 
