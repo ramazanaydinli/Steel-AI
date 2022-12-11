@@ -75,3 +75,17 @@ Lvl-5
  ![image](https://user-images.githubusercontent.com/80748060/197308936-01d3a045-c170-4982-b54d-66ff1f7cc910.png)
 
 
+Lvl-6
+ - Multi-label object detection environment created. Inference from Resnet-50 model done. Now model can recognize and localize section from any input image.
+ - These two images below is similar to what model trained on and it is working perfectly.
+ 
+ ![image](https://user-images.githubusercontent.com/80748060/206924613-1095ca88-767b-45bb-8ec8-bc9f9a94a8ad.png)
+
+
+- Model never see these two images below but it recognizes them as well.
+
+![image](https://user-images.githubusercontent.com/80748060/206924660-0e4a2473-878b-48de-a75f-8bdd2241a547.png)
+
+
+ 
+
