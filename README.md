@@ -62,6 +62,14 @@ Lvl-6
 
 ![image](https://user-images.githubusercontent.com/80748060/206924660-0e4a2473-878b-48de-a75f-8bdd2241a547.png)
 
+Final
+- Results are satisfying, below is the input and output.
+
+![image](https://user-images.githubusercontent.com/80748060/209601902-26e46d19-3a56-498d-a94d-32a3d54585d5.png)
+
+
+![image](https://user-images.githubusercontent.com/80748060/209601917-a00a6bd9-eeb3-41e5-bf69-bed6265485f9.png)
+
 
  
 
