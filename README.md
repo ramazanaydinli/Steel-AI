@@ -6,18 +6,7 @@
 After some investigation, related article which is published 6 months ago is obtained. Link of the article: https://arxiv.org/ftp/arxiv/papers/2205/2205.02659.pdf
 From the paper it can be seen that it is possible to reach %80 accuracy for both shape detection and dimension extraction. Methodology of the paper will be followed.
 
-- Prototype Work
 
-
-Firsty, input will be feeded into pre-trained neural network to obtain boundaries of text and technical drawings. Expected output is below:
-
-
-![image](https://user-images.githubusercontent.com/80748060/195900272-a7040dc0-1da9-4651-9244-26f427b5f208.png)
-
-
-
-After that text part will be used for NLP and drawing parts will be used for detailed processing using OpenCV. Obtaining information from text is relatively easy, so first focus point will be on drawings.
-For this purpose a neural network should be used but it is not possible to obtain enough data to train on. Article above suggests creating this data manually. At first four steps this manually created data is used but there are some misclassifications done by model. After some more research it is discovered that Generative Adverserial Networks (GANs) can be used to create artificial data to overcome this problem. But this approach only solves style of the drawings, also dimensions should be obtained. At the end of 1 year of this project, this much is done. For now, work is focused on tables that are containing section data.
 
  Lvl-0
  - Starting level of the project
