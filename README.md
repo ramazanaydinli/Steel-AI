@@ -1,12 +1,5 @@
 # Steel-AI
 
-- Field Research
-
-
-After some investigation, related article which is published 6 months ago is obtained. Link of the article: https://arxiv.org/ftp/arxiv/papers/2205/2205.02659.pdf
-From the paper it can be seen that it is possible to reach %80 accuracy for both shape detection and dimension extraction. Methodology of the paper will be followed.
-
-
 
  Lvl-0
  - Starting level of the project
